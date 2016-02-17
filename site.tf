@@ -11,7 +11,7 @@ resource "aws_s3_bucket" "www" {
   }
 }
 
-resource "aws_s3_bucket" "naked" {
+resource "aws_s3_bucket" "apex" {
   bucket = "chicagohaskell.com"
 
   website {
@@ -20,7 +20,7 @@ resource "aws_s3_bucket" "naked" {
 }
 
 resource "aws_route53_zone" "primary" {
-  name = "${aws_s3_bucket.naked.id}"
+  name = "${aws_s3_bucket.apex.id}"
 }
 
 resource "aws_route53_record" "www" {
