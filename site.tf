@@ -40,6 +40,7 @@ resource "aws_s3_bucket_object" "index" {
   key = "index.html"
   source = "index.html"
   content_type = "text/html"
+  etag = "${md5(file("index.html"))}"
 }
 
 resource "aws_s3_bucket_object" "style" {
@@ -47,6 +48,7 @@ resource "aws_s3_bucket_object" "style" {
   key = "assets/css/style.css"
   source = "assets/css/style.css"
   content_type = "text/css"
+  etag = "${md5(file("assets/css/style.css"))}"
 }
 
 resource "aws_s3_bucket_object" "header" {
@@ -54,6 +56,7 @@ resource "aws_s3_bucket_object" "header" {
   key = "assets/img/Chicago_tilt-shift.jpg"
   source = "assets/img/Chicago_tilt-shift.jpg"
   content_type = "image/jpg"
+  etag = "${md5(file("assets/img/Chicago_tilt-shift.jpg"))}"
 }
 
 resource "aws_s3_bucket_object" "watermark" {
@@ -61,6 +64,7 @@ resource "aws_s3_bucket_object" "watermark" {
   key = "assets/img/chicago-haskell-watermark.png"
   source = "assets/img/chicago-haskell-watermark.png"
   content_type = "image/png"
+  etag = "${md5(file("assets/img/chicago-haskell-watermark.png"))}"
 }
 
 resource "aws_s3_bucket_object" "map" {
@@ -68,4 +72,5 @@ resource "aws_s3_bucket_object" "map" {
   key = "assets/img/pivotal-map.png"
   source = "assets/img/pivotal-map.png"
   content_type = "image/png"
+  etag = "${md5(file("assets/img/pivotal-map.png"))}"
 }
