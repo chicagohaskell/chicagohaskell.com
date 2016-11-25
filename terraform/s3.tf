@@ -20,22 +20,6 @@ resource "aws_s3_bucket" "apex" {
   }
 }
 
-resource "aws_route53_zone" "primary" {
-  name = "${aws_s3_bucket.apex.id}"
-}
-
-resource "aws_route53_record" "www" {
-  zone_id = "${aws_route53_zone.primary.zone_id}"
-  name = "${aws_s3_bucket.www.id}"
-  type = "A"
-
-  alias {
-    name = "${aws_s3_bucket.www.website_domain}"
-    zone_id = "${aws_s3_bucket.www.hosted_zone_id}"
-    evaluate_target_health = true
-  }
-}
-
 resource "aws_s3_bucket_object" "index" {
   bucket = "${aws_s3_bucket.www.id}"
   key = "index.html"
